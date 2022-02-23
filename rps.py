@@ -1,15 +1,45 @@
 # Rock Paper Scissors Game
 
-import random
+# import random
+import quantumrandom
+
+# ASCII Art
+rpsart = []
+rpsart.append('''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+''')
+
+rpsart.append('''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+''')
+
+rpsart.append('''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+''')
 
 # item dictioary for mapping input to item
-ditems = {"p":0, "s":1, "r":2}
+ditems = {"r":0, "p":1, "s":2}
 
 # valid input
 vinput = "rpsq"
 
 # item list
-plist = ["PAPER", "SCISSORS", "ROCK"]
+plist = ["ROCK", "PAPER", "SCISSORS"]
 
 # constants
 game_name = "Rock, Paper, Scissors"
@@ -24,8 +54,8 @@ print(game_instructions)
 while True:
    # get and validate user input; break if 'q'
   userplay = input("\n" + game_prompt + "\n> ").lower()
-
-  if not userplay in vinput:
+  
+  if userplay == '' or (not userplay in vinput):
     print("Invalid Input")
     print(game_instructions)
     continue
@@ -36,10 +66,13 @@ while True:
   playindex = ditems[userplay]
   userplay = plist[playindex]
   print("\nYou chose " + userplay)
+  print(rpsart[playindex])
 
-  rnd = random.randint(1,3) - 1
+  # rnd = random.randint(1,3) - 1
+  rnd = int(quantumrandom.randint(1,3)) - 1
   cpu = plist[rnd]
-  print("The computer chose " + cpu + "\n")
+  print("The computer chose " + cpu)
+  print(rpsart[rnd])
 
   if playindex == rnd:
     print("Draw.")
@@ -61,5 +94,4 @@ while True:
       print("Paper covers rock. You WIN!")
     else:
       print("Scissors cut paper. You LOSE.")
-
 
