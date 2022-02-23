@@ -53,10 +53,10 @@ print(game_instructions)
 # game loop
 while True:
    # get and validate user input; break if 'q'
-  userplay = input("\n" + game_prompt + "\n> ").lower()
-  
-  if userplay == '' or (not userplay in vinput):
-    print("Invalid Input")
+  userplay = input("\n" + game_prompt + "\n> ").strip().lower()
+  if userplay == '': continue
+  if len(userplay) > 1 or (not userplay in vinput):
+    print("\nInvalid Input\n")
     print(game_instructions)
     continue
   elif userplay == "q":
