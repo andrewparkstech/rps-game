@@ -1,2 +1,2 @@
-# rps-game
+# Game
 Rock, Paper, Scissors Game
